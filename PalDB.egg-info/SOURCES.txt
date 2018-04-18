@@ -1,0 +1,11 @@
+MANIFEST.in
+README.md
+setup.cfg
+PalDB/Check.py
+PalDB/Pal.py
+PalDB/__init__.py
+PalDB.egg-info/PKG-INFO
+PalDB.egg-info/SOURCES.txt
+PalDB.egg-info/dependency_links.txt
+PalDB.egg-info/requires.txt
+PalDB.egg-info/top_level.txt

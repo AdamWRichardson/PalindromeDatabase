@@ -20,7 +20,9 @@ app.config.from_envvar('PALDB_SETTINGS', silent=True)
 
 # Create a list of palindromes that the user has entered
 list_pal = []
-
+# If the list gets greater than 10 then remove the last item
+if len(list_pal) > 10:
+    del list_pal[9]
 
 # This is then how you specify different routes within the web pages
 @app.route('/')
