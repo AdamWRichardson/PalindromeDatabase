@@ -12,5 +12,3 @@ Change directory into the cloned repository and project directory
 Run the python code
     python Pal.py
  
- 
- Now which branch am I on?
