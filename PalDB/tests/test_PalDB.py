@@ -14,6 +14,8 @@ class PalDBTestCase(unittest.TestCase):
         self.db_fd, PalDB.app.config['DATABASE'] = tempfile.mkstemp()
         PalDB.app.testing = True
         self.app = PalDB.app.test_client()
+        with PalDB.app.app_context():
+            PalDB.Pal.init_db()
 
     def tearDown(self):
         os.close(self.db_fd)
@@ -25,16 +27,15 @@ class PalDBTestCase(unittest.TestCase):
 
     def test_rejection(self):
         rv = self.app.post('/add', data=dict(
-            title="<strong>HTML</strong> Not a palindrome"
+            palindromes="Not a palindrome"
         ), follow_redirects=True)
         assert b'Sorry, your word was not a palindrome' in rv.data
 
-    def test_pal_entry(self):
-        self.app.post('/add', data=dict(
-            title="<Dammit I'm mad>"
+    def test_new_pal(self):
+        rv = self.app.post('/add', data=dict(
+            palindromes="Dammit I'm mad"
         ), follow_redirects=True)
-        rv = self.app.get('/display')
-        assert b"Dammit I'm mad" in rv.data
+        assert b'New palindrome accepted' in rv.data
 
 
 if __name__ == '__main__':
