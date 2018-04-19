@@ -3,12 +3,14 @@
 {% block body %}
     <form action="{{ url_for('addPal') }}" method="POST" class="addPal">
     <dl>
-        <dt>Please add you palindromes below:
-        <dd><input type="text" size="30" name="palindromes">
-        <dd><input type="submit" value="Check">
+        <dt>Please add you palindromes below:</dt>
+        <dd><input type="text" size="30" name="palindromes"></dd>
+        <dd><input type="submit" value="Check"></dd>
     </dl>
     </form>
-    {% for element in palindromes %}
-        <p>{{ element }}</p>
-    {% endfor %}
+    <form action="{{ url_for('display') }}" method="GET">
+        <dl>
+            <dd><input type="submit" value="See palindromes"></dd>
+        </dl>
+    </form>
 {% endblock %}

@@ -1,2 +1,3 @@
-graft flaskr/templates
-graft flaskr/static
+graft PalindromeDatabase/templates
+graft PalindromeDatabase/static
+include PalindromeDatabase/data.sql
