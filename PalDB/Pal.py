@@ -61,9 +61,7 @@ app.config.from_envvar('PALDB_SETTINGS', silent=True)
 @app.route('/')
 def home():
     db = get_db()
-    cur = db.execute('select title from palindromes')
-    pals = cur.fetchall()
-    return render_template('home.html', passed=pals)
+    return render_template('home.html')
 
 
 # Add a route which redirects either adding to the table or removing from table
