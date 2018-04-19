@@ -60,13 +60,12 @@ app.config.from_envvar('PALDB_SETTINGS', silent=True)
 # This is then how you specify different routes within the web pages
 @app.route('/')
 def home():
-    db = get_db()
     return render_template('home.html')
 
 
 # Add a route which redirects either adding to the table or removing from table
 @app.route('/add', methods=['POST'])
-def addPal():
+def addpal():
     db = get_db()
     test = check(request.form['palindromes'])
     if test:
