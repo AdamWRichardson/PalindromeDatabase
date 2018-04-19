@@ -13,7 +13,7 @@ app.config.from_object(__name__)  # load config from this file , palDB.py
 
 
 def connect_db():
-    """Connects to the specific database."""
+    # Connects to the specific database.
     rv = sqlite3.connect(app.config['DATABASE'])
     rv.row_factory = sqlite3.Row
     return rv
@@ -21,8 +21,7 @@ def connect_db():
 
 def get_db():
     """Opens a new database connection if there is none yet for the
-    current application context.
-    """
+    current application context."""
     if not hasattr(g, 'sqlite_db'):
         g.sqlite_db = connect_db()
     return g.sqlite_db
@@ -37,14 +36,14 @@ def init_db():
 
 @app.cli.command('initdb')
 def initdb_command():
-    """Initializes the database."""
+    # Initializes the database.
     init_db()
     print('Initialized the database.')
 
 
 @app.teardown_appcontext
 def close_db(error):
-    """Closes the database again at the end of the request."""
+    # Closes the database again at the end of the request.
     if hasattr(g, 'sqlite_db'):
         g.sqlite_db.close()
 
@@ -62,9 +61,7 @@ app.config.from_envvar('PALDB_SETTINGS', silent=True)
 @app.route('/')
 def home():
     db = get_db()
-    cur = db.execute('select title from palindromes')
-    pals = cur.fetchall()
-    return render_template('home.html', passed=pals)
+    return render_template('home.html')
 
 
 # Add a route which redirects either adding to the table or removing from table
