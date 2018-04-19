@@ -1,5 +1,6 @@
 drop table if exists palindromes;
 create table palindromes (
   id integer primary key autoincrement,
-  title text not null
+  title text not null,
+  made datetime not null default(getdate())
 );
