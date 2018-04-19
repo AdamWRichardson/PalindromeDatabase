@@ -17,7 +17,5 @@ def check(list_of_palindromes):
     for char in word:
         if char not in punc:
             no_punc = (no_punc + char).lower()
-    true = no_punc == no_punc[::-1]
-    if true:
-        list_of_palindromes.append(word)
-        return true
+    cond = no_punc == no_punc[::-1]
+    return cond
