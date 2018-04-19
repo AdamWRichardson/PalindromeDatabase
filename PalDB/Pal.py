@@ -13,7 +13,7 @@ app.config.from_object(__name__)  # load config from this file , palDB.py
 
 
 def connect_db():
-    """Connects to the specific database."""
+    # Connects to the specific database.
     rv = sqlite3.connect(app.config['DATABASE'])
     rv.row_factory = sqlite3.Row
     return rv
