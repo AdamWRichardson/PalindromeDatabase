@@ -86,7 +86,8 @@ def addPal():
 # Need to add a route which displays the data from the table from the last 10 minutes
 @app.route('/display', methods=['GET'])
 def display():
-    return render_template('display.hmtl')
+    db = get_db()
+    return render_template('display.html')
 
 
 if __name__ == '__main__':
