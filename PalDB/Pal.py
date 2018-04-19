@@ -74,7 +74,7 @@ def addPal():
     test = check(request.form['palindromes'])
     if test:
         # Make sure db.execute take a string which needs to be accurate
-        db.execute('insert into palindromes (title) values (?)',[request.form['palindromes']])
+        db.execute('insert into palindromes (title) values (?)', [request.form['palindromes']])
         db.commit()
         flash('New palindrome accepted')
         return redirect(url_for('home'))
@@ -87,7 +87,18 @@ def addPal():
 @app.route('/display', methods=['GET'])
 def display():
     db = get_db()
-    return render_template('display.html')
+    cur = db.execute('select title from palindromes order by id desc')
+    show = cur.fetchall()
+    return render_template('display.html', display_pal=show)
+
+
+@app.route('/clear', methods=['POST'])
+def clear():
+    db = get_db()
+    db.execute('delete from palindromes')
+    db.commit()
+    flash('All data cleared, please enter more words')
+    return redirect(url_for('home'))
 
 
 if __name__ == '__main__':
