@@ -4,7 +4,7 @@ __Date__ = 18 / 04 / 18
 
 import os
 import sqlite3
-from flask import Flask, render_template, flash, redirect, url_for, g
+from flask import Flask, render_template, flash, redirect, url_for, g, request
 from Check import *
 
 # This initiates an instance of the app
@@ -70,7 +70,7 @@ def addpal():
     test = check(request.form['palindromes'])
     if test:
         # Make sure db.execute take a string which needs to be accurate
-        db.execute('insert into palindromes (title) values (?)', [request.form['palindromes']])
+        db.execute("insert into palindromes (title, starttime) values (?, time('now'))", [request.form['palindromes']])
         db.commit()
         flash('New palindrome accepted')
         return redirect(url_for('home'))
@@ -83,7 +83,7 @@ def addpal():
 @app.route('/display', methods=['GET'])
 def display():
     db = get_db()
-    cur = db.execute('select title from palindromes order by id desc')
+    cur = db.execute('select * from palindromes where time("now", "-10 minutes") < starttime order by id desc')
     show = cur.fetchall()
     return render_template('display.html', display_pal=show)
 
