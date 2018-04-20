@@ -2,7 +2,7 @@
 {% block body %}
 <ul class="display_pal">
             {% for entry in display_pal %}
-            <li><h2>{{ entry.title }}</h2></li>
+            <li><h2>{{ entry.title }}</h2>Time created - {{ entry.starttime }}</li>
             {% endfor %}
 </ul>
 <form action="{{ url_for('home') }}" method="GET" class="addpal">
