@@ -11,7 +11,11 @@ Change directory into the cloned repository and project directory:
 
 Run the python code:
     python Pal.py
+<<<<<<< HEAD
+
+=======
  
+>>>>>>> master
  
 I've also created the unittests which require the app to be installed which can be done as follows:
  
