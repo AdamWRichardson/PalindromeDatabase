@@ -18,10 +18,3 @@ def check(list_of_palindromes):
             no_punc = (no_punc + char).lower()
     cond = no_punc == no_punc[::-1]
     return cond
-
-
-def timing(submit_time):
-    if submit_time <= 10:
-        return True
-    else:
-        return False

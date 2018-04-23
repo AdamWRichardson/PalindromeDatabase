@@ -11,7 +11,11 @@ Change directory into the cloned repository and project directory:
 
 Run the python code:
     python Pal.py
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> master
  
 I've also created the unittests which require the app to be installed which can be done as follows:
  
@@ -25,3 +29,6 @@ To then run you need to export the flask app, so flask knows what to run
     export FLASK_APP=PalDB
     export FLASK_DEBUG=true
     flask run
+    
+
+Thank you for considering my application.
