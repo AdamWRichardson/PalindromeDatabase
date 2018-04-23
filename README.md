@@ -21,7 +21,7 @@ Change into directory of the git clone:
 Then use pip to install it locally:
     pip install -e .
     
-To then run you need to export the flask app, so flask knows what to run
+To then run you need to export the flask app, so flask knows what to run:
     export FLASK_APP=PalDB
     export FLASK_DEBUG=true
     flask run
